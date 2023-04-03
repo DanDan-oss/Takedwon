@@ -1,0 +1,2 @@
+cd /d "F:\Document\VCcode\Driver\FirstDirver" &msbuild "FirstDirver.vcxproj" /t:sdvViewer /p:configuration="Release" /p:platform="x64" /p:SolutionDir="F:\Document\VCcode\Driver\FirstDirver" 
+exit %errorlevel% 
