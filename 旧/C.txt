@@ -1,0 +1,600 @@
+
+#include<stdio.h>			系统标准输入输出头文件
+#include<stdlib.h>			外部系统程序条用头文件
+#include<time.h>			获取当前系统时间
+#include<string.h>			字符串处理函数头文件
+#include<system>			调用系统函数
+#include<sys/types.h>		获取文件属性头文件
+#include<sys/stat.h>		获取文件属性头文件
+#include<stddef.h>			获取偏移量属性头文件
+
+       system("pause");		暂停功能
+       return EXIT_SUCCESS;	返回正常的退出  0
+       预定义宏
+	__FILE__			宏所在文件的源文件名(路径)
+	__LINE__			宏所在行的行号
+	__DATE__			代码编译的日期
+	__TIME__			代码编译的的时间
+
+       sizeof(变量名)		计算数据类型在内存中的大小(Byte)
+
+       数据类型
+	char^1			字符型(1字节)
+	short int^2  <=  int^4  <=  long int^4  <=  long long int^8
+				短整型(2字节) <= 整型(4字节) <= 长整型(4字节)  <= 长长整形(8字节)
+	float^4  <=  double^8	单精度浮点型(4字节)7位有效数值  <=  双精度浮点型(8字节)15~16位有效数字
+
+       取值范围
+!!!	char			1字节		-128 ~ 127 (-2^7 ~ 2^7-1)
+	unsigend char		1字节		0 ~255 (0 ~2^5-1)
+	short			2字节		-32768 ~ 32767 (-2^15 ~ 2^15-1)
+	unsigned short		2字节		0 ~ 65535 (0 ~ 2^16-1)
+	int			4字节		-2147483648 ~ 2147483647 (-2^31 ~ 2^31-1)
+	unsigned int		4字节		0 ~ 4294967295 (0 ~ 2^32-1)
+	long			4字节		-2147483648 ~ 2147483647 (-2^31 ~ 2^31-1)
+	unsigned long		4字节		0 ~ 4294967295 (0 ~ 2^32-1)
+
+       原码/补码
+	signed int a = 20		有符号位(系统默认)
+	unsigned int a =20		无符号位
+
+       全局/静态/常量 区
+	#define NAME number;			#define 常量名 值
+	const int vaule = 10;				const 全局变量(常量区不能直接或间接修改),  局部变量(堆区可以间接修改)
+	extern int a = 10;				全局变量定义也是为默认的extern , 默认外部链接
+	extern int add(int a, int b);			函数声明
+	static int b =10;				静态 全局变量为内部链接只能在本文件使用
+
+       标准 输入/输出 函数
+	scanf("%d\n", &a);				标准输入函数,&取地址符号
+	scanf("%s\n, a[ ] ");				输入字符串,遇到空格结束
+	printf("%d\n",a);				标准输出函数,打印
+	ptintf("%p\n", &a);				以十六进制打印变量内存地址
+	打印格式:
+	       %o			将数据按照八进制输出
+	       %x			将数据按照十六进制小写输出
+	       %X			将数据按照十六进制大写输出
+	       %d			将数据按照十进制类型输出
+	       %p			以十六进制打印内存地址
+
+	       %s			输出 字符数组 
+	       %c			输出 char 型
+	       %5.2f			输出 float 类型 (小数点前面保留5位.2 小数点后面保留2位小数)
+	       %lf			输出 double 型
+	       %hd			输出 short 类型
+	       %d			输出 int 类型
+	       %l			输出 long 类型
+	       %ll			输出 long long 类型
+	       %hu			输出 unsigend short 类型
+	       %u			输出 unsigend int 类型
+	       %lu			输出 unsigend long 类型
+	       %llu			输出 unsigeng long long 类型
+
+       随机数
+	#include <time.h>				引入随机数头文件
+	srand((unsigned int)time(NULL));		置随机数种子(强转无符号整型)
+	int a = rand();				生成随机数,并定义a接受
+
+       数学函数 (math.h)
+	abs(a-b);					取整数的绝对值
+	fabs(a);					取浮点数的绝对值
+	sqrt(a+b);					开平方
+	pow(x,y)					x 和 y 是浮点数
+
+       字符串处理函数(引入头文件   #include<string.h>  )
+	gets(string);			接收字符串并保存在变量里字符串可以带空格遇到换行符或结束标志结束. /getchar强化
+	puts(string); 			获取输出字符串变量,输出完后自动\n换行. /printf强化
+	fgets(string, sizeof, stdin);		从指定的文件内读入字符,直到出现换行结尾或 sizeof -1结束最后一个加上\0结束<字符串, 指定最大读取长度, 文件指针>
+	fputs(string, stdout);			将指定的字符串写入到指定的文件中遇到\0,字符串结束符不写入文件
+	scanf("%[^\n]", string)		输入字符串,遇到\n结束,适用于字符串中带空格
+	sscanf(string1, "%s %d", string2, &a);	将 1 中的数据读取出来,并转换后放入 2 和 a 中
+	       	%*s 或者 %*d			跳过数据(字符串,整型)
+	       	%[width]s				读取指定宽度(长度)的数据
+	       	%[a-z]				匹配 a 到 z 中的任意字符
+	       	%[aBc]				匹配 a B c 中的一员
+		%[^a]				匹配非 a 的任意字符
+		%[^a-z]				读取除 a-z 以外的所有字符
+	printf(%s, string);			输出自字符串
+	sprintf(string1, "%s %d", strint2, string3);	将 3 和 2 的数据格式化后放入 1 中
+	strlen(string);			字符串的有效长度遇到\0计\0前面的
+	strcpy(string1, string2); 		将源字符串2拷贝进目标字符串1中
+	strncpy(string1, string2, number);	拷贝相应数量的源字符串2放入目标字符串1中,无结束标志 \0
+	       string1[number] = '\0';		手动添加结束标志否则数据溢出出现乱码
+	strcat(string1, string2);		将字符串2追加到字符串1中
+	       string(string1, " ");		字符串追加空格
+	strncat(string1, string2, number);	追加相应数量的源字符串2放入目标字符串1中,有结束标志 \0
+	strcmp(string1, string2);		比较字符ASCII码大小(返回值  >0 <0  0 或者 1  0  -1   大于小于等于)
+	strncmp(string1, string2, number)	取相应数字的字符比较字符ASCII码大小(返回值  >0 <0  0 或者 1  0  -1)
+	stricmp(string1, string2);		以大小写不敏感方式比较两个字符串
+	strchr(string, 'c');			在字符串 1 中查找 字符2 出现的位置,返回位置地址
+	strrchr(string,'c');			在字符串 1 中查找 字符2 最后出现的位置,返回位置地址
+	strstr(string1, string2);		在字符串 1 中查找 字符串2 出现的位置的地址,返回位置地址
+	strtok(string, "string");		字符串分割,遇到 "string"  进行切割
+	strspn(string, "string");		在 1 中查找非 2 字符集里的字符出现的第一个位置,返回下标
+	strcspn(string, "string");		在 1 中找 2 里面所包含的字符出现的第一个位置,返回下标
+	strpbrk(string1, string2);		在 1 中找 2 里面所包含的字符出现的第一个位置,返回字符串
+	atoi(string);			跳过前面的所有空格将字符串中的数字和正负号转化为整形
+	atof(string);			把一个以小数形式的字符串转化为浮点型
+	atoi(string);			把字符串转化为 long 类型
+
+       普通语句
+	break;				直接跳出当前循环层
+	continue				结束本轮循环并开始下一轮循环
+
+       指针 ( 32位系统中4个字节,64位系统8个字节)
+
+       作用域
+	static int a = 10;			静态全局变量(只能初始化一次),作用域只是本文件
+	static void fun1( );			静态函数(声明时不能与extern使用),作用域只是本文件
+
+       内存四区
+	代码区				程序指令
+	数据区(静态区,全局区)	
+	       初始化的数据			初始化的全局变量, 初始化的静态全局变量, 初始化的静态全局变量
+	       未初始化的数据(默认初始值未0)	未初始化的静态局部变量, 未初始化的全局变量, 未初始化的静态全局变量
+	       常量				字符串常量, define定义的常量
+	堆区				变量, 数组, 结构体, 指针, 枚举, 函数形参, const常量
+	栈区				音频文件, 视频文件, 图像文件, 文本文件, 大数据
+
+       开辟堆空间
+	int *p =(int *)malloc(sizeof(int) * 10);	开辟堆空间,未初始化
+	       calloc(num, sizeof(size));		在内存区中开辟 num 个长度为 size 字节的连续空间,自动初始化内存为0
+	       realloc(p, size);			重新分配由 malloc calloc 在堆中分配内存空间的大小
+	memset(p, 0, sizeof);			重置开辟的空间会重置每个字节(int)类型有效重置0 <目标, 重置值, 字节大小>
+	free(p);				释放由malloc函数开辟分配的空间
+
+       内存空间字符串函数 (需引用 #include <string> ^)
+^	memcpy(p, src, size);			拷贝相应路径的值放入目标地址中, 源地址和目标地址不能发生重叠,字符大小
+^	memmove( );			和 memcpy() 用法一样,效率偏低, 源地址和目标地址可以发生重叠
+^	memcmp(p1, p2, size);		比较 p1 p2 所指向的前 n 个字节 (等于 =  大于>  小于< )
+
+       复合类型
+	结构体  (offsetof 引入头文件 <stddef.h>)
+	       结构体变量
+	       	struct info { }namev;		结构体定义,结构体名称
+	       	namev.name = value;	结构体变量(赋值字符串需要用 strcpy() 赋值)
+	       结构体指针
+	      	struct info { }stu;		结构体定义
+	     	 struct info *s = &stu	指针指向stu变量
+	     	 s->name = value;		给指针成员赋值
+	       offsetof(struct info, name);		获取结构体成员相对于结构体首地址的偏移量
+	共用体 union			用法与结构体一样,大小是最大成员大小,所有成员公用一块内存
+	枚举   enum			书写格式与结构体一样,用于流程控制
+
+	typedef				定义类型别名,简洁类型名称,结构体名称
+
+       文件操作   {#include <stdio.h>}
+	FILE *fp = fopen("URL", "r");		打开文件,返回值为空打开失败 <需打开文件的路径, 打开文件的设置>
+	       打开模式
+	       	r 或 rb			以只读模式打开一个文本文件(不创建文件,文件不存在会报错)
+	       	w 或 wb			以写的方式打开文件(文件存在会清空文件,不存在则会创建一个文件)
+	       	a 或 ab			以追加方式打开文件(在文本末尾添加内容,文件不存在会创建文件)
+	       	r+ 或 rb+			以可读, 写的方式打开文件(不创建新文件)
+	       	w+ 或 wb+		以可读, 写的方式打开文件(如果文件存在则清空文件,文件不存在创建一个文件)
+	       	a+ 或 ab+			以添加方式打开文件,打开文件并在末尾跟该文件(文件不存在创建文件)
+	fclose(fp);				关闭文件,操作完文件
+	fputc('A',fp);			将一个字符写入文件中,会覆盖之前的内容
+	char ch = fgetc(fp);			读取文件中的一个字符,顺序读取(使用while循环遍历整个文件断文件是否结尾
+					    feof判断文件是否结尾EOF判断字符是否结尾)
+	feof(fp);				检测是否读取到文件结尾,返回值非 0 以到结尾, 0 未结尾
+	fputs(str, fp);			将str所指定的字符串写入fp文件夹中,字符串结束符\0不写入返回值0成功 -1失败
+	fgets(temp, size, fp);			从指定文件夹读入对应大小或者遇到 \n 字符串,保存到 temp中,字符串实际大小大于对应设置
+					    大小,再次读取从上次读取结尾处,遇换行后时直接多次调用(多次调用需使用memset重置)
+	fprintf(fp, char* temp);		转换格式化字符串 temp (用法与printf()一样) ,将结果保存搭配 fp 中,遇 \0 结束
+	fscanf(fp, char* temp);		从 fp 中读取字符串,并转换格式化数据与 scanf 用法一样
+	fseek(fp, size, SEEK_SET);		移动文件 指定(size) 光标位置,从指定光标位置开始读写
+	       SEEK_SET				光标位置从文件开头位置移动 size 个字节
+	       SEEK_CUR				光标位置从当前位置位置移动 size 个字节
+	       SEEK_END				光标位置从文件末尾位置位置往前移动 size 个字节 (size 为负数)
+	int len = ftell(fp);			返回当前光标位置
+	rewind(fp);			把文件光标的读写位置移动到文件开头
+
+       二进制文件读写操作   {#include <stdio.h>}
+	fwrite(ptr, size, num, fp);		按照块级写入文件(覆盖写入) <要写入的数据, 一次写入的大小 , 写入次数, 要写入的文件>
+	fread(ptr, size, num, fp);		按照块级读取文件
+
+       获取文件状态  {#include<sys/types.h>  #include<sys/stat.h>}
+	stat("URL", s);			获取文件状态,返回结构体  <文件名, 保存文件信息的结构体>
+	       struct stat s = {0};			定义接收结构体
+	       stat("URL", &s);				将 path 文件状态信息保存到 s
+	       int size = s.st_size;			得到结构体中的成员变量
+	结构体成员变量
+	       st_dev			文件的设备编号
+	       st_ino				节点
+	       st_mode			文件的类型和存取权限
+	       st_nlink			连接到该文件的硬链接数量,刚建立的文件值为1
+	       st_uid				用户ID
+	       st_gid				组ID
+	       st_rdev			(设备类型)若此文件为设备文件,则为其设备编号
+	       st_size			文件字节数(文件大小)
+	       st_blksize			块大小(文件系统的I/O 缓冲区大小)
+	       st_blocks			块数
+	       st_atime			最后一次访问时间
+	       st_mtime			最后一次修改时间
+	       st_ctime			最后一次改变时间(指属性)
+
+       删除/重命名 文件
+	remove(fp);			删除文件 成功返回值0, 失败-1
+	rename(aname, bname);		修改文件名 <旧文件名, 新文件名> 成功返回值0, 失败-1
+	fflush(fp);				更新缓冲区,将缓冲区的数据立马写到文件
+
+       结构成员相对于结构开头的字节偏移量
+	offsetof(struct a, b)			获取成员 b 相对于结构体开头 a 的偏移量
+
+
+
+
+C++  ( .cpp)
+
+#include <iostream>			系统标准输入输出头文件
+#include <string>				string类型使用必须引用
+#include <stdexcept>			标准异常头文件
+#include <iomanip>				io man ip 
+#include <fstream>				文件读写头文件
+using namespace std;			使用 std 命名空间
+
+       标准输入输出流
+	cout << "string " << endl;			标准的输出 (从缓冲区输出到屏幕)
+	       cout.flush() ;				      刷新缓冲区, linux有效
+	       cout.put() ;				      向缓冲区写字符,一个字符
+	       cout.write(buf, sizeof(buf)) ;		      将字符数组输出到显示设备
+	       cout.width( sizeof) ;			      设置字符段的宽度
+	       cout.fill('*') ;				      设置填充字符 *
+	       cout.setf( ios::left);			      设置输出格式状态
+		ios::left					输出数据向左对齐
+		ios::right					输出数据向右对齐
+		ios::internal				数值的符号向左对齐, 数值向右对齐
+		ios::dec					设置整数的基数为 10
+		ios::oct					设置整数的基数为 8
+		ios::hex					设置整数的基数为 16
+		//
+		ios::showbase				显示整数基数(8为0开头, 16为 0x开头)
+		ios::showpoint				强制输出浮点数的小点和尾数0
+		ios::uppercase				输出16进制输出字母为大写
+		ios::showpos				对正数显示 '+' 号
+		ios::scientific				浮点数以科学计数法格式输出
+		ios::fixed					浮点数以定点(小数)格式输出
+		ios::unitbuf				每次输出后刷新所有的流
+		ios::stdio					 每次输出后清除 stduot, stderr
+	       cout.unsetf(ios::dec);			      卸载 十进制 
+		ios::dec					设置整数的基数为 10
+		ios::oct					设置整数的基数为 8
+		ios::hex					设置整数的基数为 16
+
+	cin >> "string";				标准输入( 从输入设备输入到缓冲区)
+	       cin.get()				      一次只能读一个字符 (C语言的 getchar() )    重载
+	       cin.get(buf);				      读一个字符并放入 buf中     重载
+	       cin.get(buf, sizeof(buf));			      可以读取字符串, 换行符遗留在缓冲区      重载
+	       cin.getline(buf, sizeof(buf));		      获取字符串,换行符未遗留在缓冲区中,并且从缓冲区中清除       重载
+	       cin.igonre( )				      忽略缓冲区字符 (无参默认忽略一个字符,可以提供 int 类型参数,根据参数忽略个数)  重载
+	       cin.peek()				      查看缓冲区中的第一个字符,并不取走  没有重载
+	       cin.putback(buf)				      将从缓冲区取出的buf放回缓冲区中,并且放回原位
+	       cin.fail() ;				      查看缓冲区的标志位, 0为正常 1为异常
+	       cin.clear() ;				      重置标志位
+	       cin.sync() ; 				      清空缓冲区(vs2013可用,vs2015以上版本无效)  cin.getline清空缓冲区
+
+       string类型					,char类型字符串 (const char* 可以隐式转换成 string)
+	string 转 const char *			       st.c_str();   st为 string类型的变量 
+
+       双冒号
+	::					作用域运算符 (全局作用域)
+       三目运算符
+	a>b ? a : b;				       c语言三目运算符返回的是变量里面的值, C++返回的值
+       命名空间
+	namespace 				       命名空间必须定义在全局下(可以放 函数 变量 结构体 类.... 命名空间可以互相嵌套)
+
+       const修饰和extern链接
+       	const int vaule = 10;				       const 全局变量(常量区不能直接或间接修改),  局部变量为符号表键值对不可以修改
+	extern int a = 10;				       全局变量定义也是为默认的extern , C++默认内部链接
+	extern int add(int a, int b);			       函数声明
+	static int b =10;				       静态 全局变量为内部链接只能在本文件使用
+
+	const 分配内存请情况				
+						       对 const 修饰的变量取地址会临时分配内存将符号表的值放入内存,指针修改内存不影响符号表
+						       extern 修饰的可以链接外部的 const 变量
+						       自定义数据类型( struct结构体 )
+						       普通变量用于初始化 const 修饰变量的值
+       inline 内联函数					       代替宏定义,避免宏定义缺陷
+
+       引用
+	int &b = a;				       对 a 变量取别名(小名),不能直接赋值,必须是合法空间
+	const int &a = 10;				       const 修饰编译器会开辟临时内存,并将值放进去,后续利用指针修改const修饰值
+
+       class 类 (类是对对象的抽象,对象是对类的实例)
+	成员属性					
+	成员函数					       类内部的成员函数编译器默认前面加 inline 内联函数关键字
+	public :					       公共权限
+	protected:					       保护权限
+	private:					       私有权限
+
+	数据的初始和清理
+	       构造函数(初始化)				       没有返回值,没有void,与类名相同,重载,可以设置参数,系统默认调用
+	       拷贝构造函数				       没有返回值,没有void,与类名相同,参数用 const 修饰
+	       析构函数(清理)				       没有返回值,没有void,,类名前面加 ~,,不可以重载,没有参数.系统默认调用
+
+	explicit					防止构造函数中的隐形类型转换
+	静态成员变量和静态成员函数
+	       static int m_Age;			       静态成员变量会所有类对象共享数据,类内声明,类外实现
+	       int Person::m_Age = 10;			       全局作用域下的 类外实现
+	       static void func(){ };			       与所有成员共享函数,不可访问普通成员变量
+
+	创建对象与清除 (new运算符 和 delete 运算符)
+	       Person *p1 = new Person;			       创建新对象,放在堆区空间,不会自动释放,构造函数自行初始化
+	       delete p1;				       配合 new 用, 释放对象空间内存,释放对象数组必须 delete [ ] p1;
+
+	this 指针
+	       * this					       对 this 取 * 返回的永远是对象本体
+
+       	mutable 关键字				       允许修改常函数 值
+	friend  友元类/函数 				       全局函数写在类中声明 (前面加friend关键字) 访问类中的私有成员属性
+       
+	operator+					       运算符重载
+
+       继承[ class 子类 : 继承方式 父类 ]			子类(派生类), 父类(基类)
+						如果子类出现和父类同名的成员函数,子类成员重定义父类,虚假作用域调用父类
+       多继承[ class 子类 : 继承方式 父类1,  继承方式 父类2 ]	
+	菱形继承					菱形继承,两个父类继承在上一集的父类,子类继承同一种类数据无意义,在两个父类继承时使用虚基类
+	       virtual 虚基类\虚函数			里面包含 vbptr指针(虚基类指针),指向 vbtable(虚基类表), 
+						表中索引1记录vbptr地址到继承数据的偏移量 (继承数据 = &vbptr + 偏移量)
+		class Animal{ int m_Age; };
+		class Sheep : virtual public Animal{ };
+		class Tuo : virtual public Animal{ };
+		class sheep_Tuo : public Sheep, public Tuo{ };	// 只会继承一份 m_Age 下来
+       多态						父类型声明 | 子类型重写虚函数
+ 
+       重载  重定义  重写
+	重载					同一作用域下,  函数名相同,  参数个数 顺序 类型不同
+	重定义(有继承关系)				子类重新定义父类中同名成员函数,   将父类中同名成员函数隐藏掉
+	重写(有继承关系)				父类中有(纯)虚函数,  子类重写父类中的(纯)虚函数 ( 返回值类型 函数名 形参列表一致)
+
+       template
+	template<typename T>			函数模板化
+	template<class T>				类模板
+
+       C++数据转换
+	int a = static_cast<int>(temp);			静态类型转换(允许内置的数据类型转换)
+	dynamic_cast<int>(temp);			动态类型转换(不允许内置的数据类型转换, 不可父类指针转子类指针)
+	comst_cast 				(只能操作指针和引用)				
+	       int *a = const_cast<int *>(p);		        //将非const修饰的指针常量和引用加上const, 有sonst的卸掉const 
+	       const int* a = const_cast <const int *>(p);		
+	       const int &num = const_cast <const int &>(numF);
+	       int &num = const_cast<int &>(numF);	        //修改const 修饰的 引用
+	reinterpret_cast				重新解释转换(不安全)
+
+       C++异常 (exception  所有标准异常基类)
+	if(a == 0){throw -1;}				判断是否发生异常返回   抛出异常 
+	try { temp(); }				可能出现异常的函数(代码段)
+	catch (int){ };				异常捕获(int 返回异常的类型 char double) ,除了这三种类型其他楼型捕获都用 ...
+
+       C++文件读写  #include<fstream>
+	ofstream fp("/a.txt", ios::out | ios::trunc);		创建文件写入对象,并指定路径 打开方式
+	       fp.open("/a.txt", ios::out | ios::trunc);		给已创建的文件写入对象设置路径和打开方式
+		ios::out				        以输出(写)方式打开(默认),如果已有同名文件,将其原有内容删除
+	       if(fp.is_open())				判断文件对象是否打开成功,返回值为 bool 值
+	       fp.close();				关闭文件对象
+	ifstream ifs("/a.txt", ios::in)			创建文件读取对象,指定路径 打开方式
+	       ifs.open("/a.txt", ios::in)			给已创建的文件读取对象设置路径和打开方式
+		ios::in				       以输入(读)方式打开
+	       if(ifs.is_open())				判断文件对象是否打开成功,返回值为 bool 值,打开成功为 true
+
+       STL(容器(序列式容器, 关联容器), 算法(质变算法, 非质变算法), 迭代器(双向迭代器, 随机访问迭代器: 支持跳跃式访问容器元素), 仿函数, 
+       适配器, 空间配置器) 
+
+	容器 (vector, list, deque, set, map)  #include <vector || 容器>
+	       vector<int> v;				       创建容器并声明迭代器 v
+	       v.push_back(10);				       插入数据
+	       v.end();				       
+	迭代器(iterator)    --> 指针
+	       vector<int>::iterator p1 = v.begin();		       起始迭代器, 指向容器中第一个元素的地址
+	       vector<int>::iterator p2 = v.end();		       结束迭代器, 指向容器中最后一个元素的下一个位置的地址
+	             for(vectot<int>::iterator it = v,begin(); it != v.end(); it++) { cout<< *it <<endl; }  遍历容器
+	算法(sort, find, copy, for_each) #include <algorithm>
+	       for_each(vi.begin(), v.end(), function);		       起始位置, 结束位置(判断起始位置等于结束位置,等于结束遍历), 递归函数(功能实现)
+
+
+QT嵌入式开发
+       快捷键
+	ctrl + R					编译运行
+	ctrl + B 					编译
+	ctrl + /					注释
+	ctrl + F					查找 ESC 退出
+	ctrl + i 					自动对齐
+	ctrl + shift +方向键				整行移动
+	F4					文件切换 ( cpp 和 h)
+
+       数据类型转换
+	temp.toUtf8().data();				Qstring 转 char *调用toUtf8()转换为 QBtyeArray,再调用data()转换为char*
+	QString::number(a);				int a 转换为QString类型
+
+       头文件
+	#include <QPushButton>			常用按钮控件
+	#include <QDebug>				命令控制
+
+       命令行输出
+	qDebug<<"text";				命令行输出
+
+       窗口
+	resize(600, 400);				       重置窗口大小
+	this->setWindowTitle("title");		       设置窗口标题
+	this->setFixedSize(x, y);			       固定窗口大小
+
+       设置按钮 
+	QPushButton * btn1 = new QPushButton("name", this);
+	QPushButton * btn = new QPushButton;
+	       btn->setParent (this);		       设置 p 的父窗口,如果是结构函数内调用可以用this代替
+	       btn->setText("text");			       设置文本
+	       btn->move(x, y);			       移动按钮,设置坐标
+	       信号和槽     connect(信号的发送者(指针), 发送的信号(函数入口地址), 信号的接收者(指针), 信号处理(槽函数入口) )
+		connect(btn, &QPushButton::clicked, this, &QWidget::close);		       链接信号
+		       connect(btn, SIGNAL(clicked()), this, SLOT(close()));		       QT4版本写法
+		       coonetc(btn, &QPushButton::clicked, [=]{   })			       匿名函数
+		disconnect(btn, &QPushButton::clicked, this, &QWidget::close);	       断开链接
+		clicked				       点击信号
+		pressed				       按下信号(鼠标按下)
+		released				       释放(鼠标抬起)
+		triggered				       触发
+		toggled				       开关状态
+		function
+		      close()				       关闭槽信号
+		自定义信号和槽  (emit  触发自定义信号)
+		       自定义信号			       写在 signals下  返回值是 void 只需要声明不需要实现 可以带参数和不带参数发生重载
+		       自定义槽函数			       写在 public slots下,QT5版本后可以写在 public下, 可以发生重载, 需要有声明有实现
+
+       QMainWindow
+	QmenuBar* bar = menuBar();			菜单栏, 只能有一个  #include <QmenuBar>
+	       this->setMenuBar(bar)		       	把菜单栏设置窗口
+	       QMenu* qm1 = bar -> addMenu("name");	       添加菜单栏
+		QAction* action1 = qm1 -> addAction("name");      添加菜单项
+		qm1->addSeparator();		       在菜单项之间添加分割线
+	QToolBar* toolBar = new QToolBar(this);		工具栏, 可以创建多个工具栏  #include <QToolBar> 用new创建需指定父窗口
+	       addToolBar(Qt::LeftToolBarArea, toolBar);	       给某个工具栏设置窗口,并设置停靠方向
+		toolBar->setMoveable(false);		       设置是否允许移动(总开关)
+		toolBar->setAllowedAreas(Qt::LeftToolBarArea | Qt::ReightToolBarArea);
+						       设置只允许工具栏停靠位置  (左 | 右 | 上 | 下)
+		toolBar->setFloatable(false);		       设置工具栏是否允许浮动
+		toolBar->addAction("name");		       工具栏设置菜单项
+		toolBar->addSeparator();		       工具栏菜单项之间添加分割线
+	QStatusBar* stBar = statusNar(); 		状态栏 只能有一个  #include <QStatusBar>
+	       setStatusBar(stBar);			       状态栏设置窗口, 
+	       QLable* label1 = new QLabel("text");		       创建文本信息 #include <QLabel (文本控件)>
+		stBar->addWidget(label1);			将文本信息绑定到状态栏中 (从左往右添加信息)
+		stBar->addPermanentWidget(label1);		将文本信息绑定到状态栏中 (从右往左添加信息)
+	QDockWidget* dkWidget = new QDockWidget("text", this);      #include <QDockWidget>
+						浮动窗口(铆接部件) 可以有多个
+	       addDockWidget(Qt::BottomDockWidgetArea, dkWidget);
+						       设置浮动窗口  并设置默认停靠位
+	       dkWidget->setAllowedAreas(Qt::LeftToolBarArea | Qt::ReightToolBarArea)
+						       设置浮动窗口允许停靠位
+	核心部件 #include 
+	       QTextEdit* textEdit = new QtextEdit(this);	       文本编辑  #include <QTextEdit>
+		setCentralWidget(textEdit);			设置为中间内容
+
+       UI	object(控件对象)
+	ui->object->setIcon(QIcon(": + 前缀 + src/a.png"));		添加小图标
+	connect(ui->object, &QAction::triggered, [=](){ });		UI控件绑定信号和槽
+	UI控件
+	       push Button					按钮
+	       Tool Button					工具按钮   一般只用来显示图片
+	       Radio Button					单选按钮
+		ui->object->setChecked(true);			       单选框默认选中 
+	       Group Box					分组框  (同一类型的单选按钮放在一个分组框里面)
+		connct(ui->object, &QCheckBox::stateChanged, [=](int state){ });
+							       将选中的状态放入参数 state中,未选中值 选中值为2 半选中为1
+	       listWidget					列表 #include <QListWidgetItem>
+		QListWidgetItem* item = new QListWidgetItem("text");    创建的列表行  
+		item->setTextAlignment(Qt::AlignHCenter);	        设置文本水平居中对齐
+		ui->object->addItem(item);			        将创建的行加入到列表单元中
+		       ui->object->addItems(QStringList()<<"第一行"<<"第二行"<<"第三行"<<"第四行");
+							        一次性将不同行的文本加入列表,但不能设置对齐方式
+	       treeWidget					树列表
+		ui->object->setHeaderLabels(QstringList()<<"姓名"<<"性别");  
+							        设置头的标签
+		QTreeWidgetItem* liItem = new QTreeWidgetItem(QStringList()<<"第一个根列表"<<"第二个根列表");
+							        创建根列表
+		ui->object->addTopLevelItem(liItem);		        将创建的根列表加载到顶层
+		       QStringList here1;				添加子节点并设置文本
+		       here1<<"张三"<<"男";
+		       QTreeWidgetItem* li1 = new QTreeWidgetItem(here1);	创建子节点变量
+		       liItem->addChild(li1);				根列表挂载子节点
+	       tableWidget					表格
+		ui->object->setColumnCount(3);		        设置表格有多少列
+		ui->object->setHorizontalHeaderLabels(QStringList()<<"姓名"<<"性别"<<"年龄");
+							        设置每列的水平表头
+		ui->object->setRowCount(5);			        设置行数
+		ui->object->setItem(0, 0, new QTableWidgetItem("亚瑟"));
+							       设置正文(1,2参数为表格的列和行)
+		       QStringList nameList;
+		       nameList<<"张三"<<"李四"<<"王二麻子"<<"翠花"<<"二狗子";
+		       QList<QString> sexList;
+		       sexList<<"男"<<"男"<<"男"<<"女"<<"男";
+		       int age[] = {10, 20, 30, 40, 50}
+		       for(int i=0; i<3; i++){
+			int col =0;
+			ui->object->setItem(i, col++, new QTableWidgetItem(nameList[i]));
+			ui->object->setItem(i, col++, new QTableWidgetItem(sexList.at[i]));
+			ui->object->setItem(i, col++, new QTableWidgetItem(QString::mumber(age));
+	       toolBox					分组栏(QQ好友分组)
+	       tabWidget					分组标签(浏览器上面不同页面之间的)
+	       stackedWidget					栈控件(类似于Qt左侧栏的菜单页)需绑定按钮切换页
+		connect(ui->btn, &QPushButton::clicked, [=](){
+		       ui->stackedWidget->setCurrentIndex(0);	//绑定按钮,点击跳转至第0号位页面
+		});
+	       frame					做边框用
+	       dockWidget					浮动窗口
+	       comboBox					下拉框
+		ui->object->addItem("text");			添加下拉框选项(文本)
+	       fomtComboBox					字体下拉框
+	       lineEdit					单行文本框
+	       textEdit					文本框(可修改里面的字体倾斜颜色)
+	       plainTextEdit					单纯的文本框(不能设置字体倾斜颜色)
+	       spinBox					整数码表(时间戳)
+	       dounleSpinBox					小数码表
+	       timeEdit					时间
+	       dateEdit					日期
+	       date/timeEdit					时间和日期
+	       horizontalSlider					滚动条(视频播放)
+	       label						标签(可加载图片)
+		ui->object->setPixmap(QPixmap(": + 前缀 + src/a.png"));//显示图片
+		QMovie* img = new QMovie(": + 前缀 + src/a.gif")	 创建动态图变量
+		ui->object->setMovie(ing);			 动态图变量绑定标签
+		img->start();				动态图播放 
+				
+       对话框     #include <QDialog>
+	模态对话框(不可以对其他窗口进行编辑)    非模态对话框(可以对其他对话框进行编辑)
+	       QDialog dl(this);				创建模态对话框
+		dl.resize(120, 50);			       指定对话框大小
+		dl.exec();				       窗口阻塞
+	       QDialog* dl = new QDiallog(this);		创建非模态对话框
+		dl->resize(120, 40);			       指定对话框大小
+		dl->show();				       显示对话框
+		dl->setAttribute(Qt::WA_DeleteOnClose);	       设置对话框属性 (当窗口关闭时new出来的对象同步释放掉)
+	消息对话框    #include <QMessageBox>
+	       QMessageBox::critical(this, "title", "text");	       错误对话框
+	       QMessageBox::information(this, "title", text);	       信息提示对话框
+	       QMessageBox::warning(this, "title", "text");	    	   警告对话框
+	       QMessageBox::question(this, "title", "text", QMessageBox::save | QMessageBox::Cancel, QMessageBox::Cancel);	        
+						       询问对话框 返回值按键类型( (父窗口, 标题, 中间文本, 按键类型(默认Yes/No), 默认关联回车的按键)
+		if(QMessageBox::Cancel == QMessageBox::question(this, "title", "text", QMessageBox::save | QMessageBox::Cancel))
+						       判断用户是否点击了第一个按钮
+	颜色选择对话框 #include <QColorDialog>
+	      		       颜色获取对话框,返回用户选择的颜色
+	选择文件或目录  #include <QFileDialog>
+	      QString fileName = QFileDialog::getOpenFileName(this, "title","./src/", "(*.exe)");
+	字体选择对话框  #include <QFontDialog>
+	      bool ok;				
+	      QFont ft = QFontDialog::getFont(&ok, QFont("微软雅黑", 36))
+						      获取用户选取的的字体信息(参数2 为提前设好的默认)
+		ft.family();				      字体 返回值QString类型
+	      	ft.pointSize();			      字号
+
+       QT事件
+	鼠标事件
+	       void enterEvent(QEvent *);			鼠标进入事件
+	       void leaveEvent(QEvent *);			鼠标离开事件
+	       void mousePressEvent(QMouseEvent* ev);		鼠标按下
+		QString str = QString("鼠标按下了 x=%1, y=%2").arg(ev->x()).arg(ev->y());
+		if(ev->button() == Qt::LeftButton)		       判断是否是鼠标左键被按下
+						       获取点击位置的信息
+	       void mouseReleaseEvent(QMouseEvent* ev);	鼠标释放
+	       void mouseMoveEvent(QMouseEvent* ev);	鼠标移动
+		if(ev->buttons() & Qt::LeftButton)		       判断是否为左键按下时移动(连续动作用buttons和位与运算判断不能用 ==)
+	       this->serMouseTracking(true);			设置鼠标追踪(代码写在控件的构造函数里,当鼠标进入控件范围时进行追踪)
+	定时器事件 timerEvent      #include<QTimerEvent>
+	       void timerEvent(QTimerEvent *t);			重构定时器函数
+		static int num =1;				       构建临时静态变量(临时静态变量只会被初始化一次)
+		int time1 = startTimer(1000);			       启动定时器 参数单位为毫秒级 返回定时器唯一的ID号
+		if(e->timerId() == time1){ };			       当多个不同时间段定时器事件时,判断事件Id执行操作
+	       QTimer* timer_A = new QTimer(this);			在Widget构造函数中New一个QTimer类  #include <QTimer>
+		timer_A->start(500);				       启动定时器
+		connect(timer_A, &QTimer::timeout, [=](){ qDebug()<<"";});
+							       绑定事件"匿名"函数  timeout每隔指定毫秒抛出信号
+	       QTime Stop | Continue
+		connect(ui->pushButton, &QPushBUtton::clicked, [=](){ 
+		       timer_A->stop();				       暂停时间事件
+		})
+	Event事件分发器
+	       bool Event(Qevent *e);				鼠标分发器,可重写里面的事件捕获函数,在头文件声明源文件实现
+		bool MyWidget::event(QEvent *e){
+		       if(e->type() == QEvent::MouseButtonPress) { return true;}		需要捕获的事件,函数体写返回ture表示事件拦截
+		       return Widget::event(e);					其他不需要捕获的事件返回给父类处理
+		}

@@ -1,0 +1,643 @@
+<！DOCTYPE html>
+   <html lang="en">
+   <meta charset= "utf-8">
+   <line href="favicon.ico" rel="shortcut icon">       title 图标引用 
+三大标签优化
+    <title> 网站标题+和标题广告 </title>
+    <meta name="description" content=" 介绍网站 " />
+    <meta name="keywords" content=" 搜索关键字"/>
+
+h1-h6  标题标签	
+p  段落标签
+hr 水平线标签 		  ——单标签
+br  换行符  		  ——单标签
+base 可以设置整体链接的打开状态
+top 上        bottom  下         left   左       right   右      center   居中
+
+字体标签
+    b   strong    以粗体方式显示文本
+    i    em         倾斜斜体显示
+    s    del      文本中间加线表示删除的意思
+    u    ins              加下划线
+
+img 图片  		               ——单标签
+     src  路径
+    alt   无法显示图片时替换成文本
+    itile  鼠标悬停时显示的文本内容
+    width   图片宽度
+    height  图片高度 
+    border 设置边框图片
+a  链接标签
+   href   跳转路径
+   _blank  新窗口链接  （默认self  覆盖当前页面）
+    id   跳转目录
+特殊字符
+  &nbsp;  空格
+  &lt;       小于符号
+  &gt;       大于符号
+  &times;    乘号
+  &divide；  除号
+无序列表标签  ul
+   包含标签 li（列表）
+                               list-style： none;    取消li 前面的小点
+有序列表标签  ol
+     li  (列表)
+自定义列表标签 dl
+     dt   主列表
+    dd    副列表，围绕主列表
+table 表格
+   tr  行
+   td  单元格
+   caption    表格标题
+表格属性
+  border  设置表格边框（border默认为0，无边框）
+  cellspacing    设置单元格与单元格边框之间的空白间距
+  cellpadding   设置单元格内容与单元格边框之间的空白间距
+  width    设置表格宽度
+  height   设置表格的高度
+  align    设置表格在网页中的水平对齐方式（方式有:left  center  right.)
+合并表格
+  rowspan 跨行合并
+  colspan   跨列合并
+input 控件          ---> 单标签
+   input type=""  类型
+     编辑框
+       text   单行文本输入框
+       password    密码输入框
+     按钮:
+       radio      单选框按钮      checked="checked"    默认选择
+       checkbox   多选框按钮       checked="checked"    默认选择+
+       button   普通按钮
+       submit   提交按钮
+       reset      重置按钮
+       image    图像形式的提交按钮
+       file       文件域
+		<accept = "image/*"  multiple>      文件域限制上传文件类型   multiple文件域可以上传多个文件
+	
+    lable  用于绑定一个表单元素，当点击lable标签时候，被绑定的表单元素获取焦点
+	for   属性规定lable与哪个元素绑定  <lable for="表单标签name">name</lable> 
+   name    控件的名称（由用户自定义）
+   value    input控件中默认的文本值
+   checked   定义选中控件默认被选中项
+   size      input控件在页面中的显示宽度（正整数）
+textarea   文本域，可以创建多行文本也可以限制文本数
+  <textarea cols="每行中的字符数"  rows="显示的行数"></textarea>
+      disabled:disabled  禁用属性
+      readonly:readonly    文本域只读
+select  下拉菜单
+  <option>选择项</option>
+           selected="selected"    下拉菜单默认选项    选中
+form表单提交域
+      <form action="提交文件路径" method="get" ( enctype="multipart/form-data" ) autocomplete="off" novalidate> </form>
+	method(提交方式): get   post
+	enctype="multipart/form-data   上传文件时使用参数(编码格式,:多卷,文件上传时将文件压缩为多卷是上传),默认为urlencoded(url地址上传)
+	#如果一个表单中有文件域(文件上传),必须将表单的 method 设置为post, enctype设置为 multipart/form-data
+	autocomplete="off"      	关闭表单自动生成前几次输入过的提示
+	novalidate			关闭客户端校验
+	      <input type="file" name="" />
+      <button>登陆</button>		表单提交按钮
+
+
+css
+    !important;    改变权限最大
+    list-style:none;    取消li 前面的小点
+    外部链接引用css   link
+          <link href="css文件的路径"  rel="stylesheet" />   link 为单标签
+                 rel:定义当前文档与被链接文档之间的关系，在这里需要指定为“stylesheet”,表示被链接的文档是样式表文件
+           @inport url(" 路径")		在一个css文件中引入另一个css文件
+   class  命名标签名字
+   style{}
+        样式，css引用
+              color:     颜色
+              background-color:   背景颜色
+              background-image:url(**)    背景图片
+              font-family:     字体类型
+              font-weight:    字体粗细
+                        bold（700 大小）   加粗字体  
+                        normal (400 大小)    正常字体
+              font-style:     字体风格
+                      normal   正常字体
+                      italic    倾斜字体
+              font-size: **px （一般16px）     字号大小         单位:  px(像素)   em（相对于当前对象内文本的字体尺寸）
+          font 合写( font:  font-style  font-weight  font-size/line-height font-family)  连写有一定的顺序，其中不需要的属性可以省略(size和family不可以省略)
+              font: 400 16px "宋体"
+      line-height:**px    行间距     一般比字体大小多7或8个像素  
+      text-align:     文本水平对齐方式(垂直居中：行高等于高   line-height: **px )
+              left  左对齐（默认值）          right  右对齐            center  居中对齐
+      text-indent:*em    段落首行缩进*个字（1em 就是一个字的距离）
+      text-decoration:  字体装饰
+         none   无装饰
+         underline    下划线
+         overline    上划线
+         line-through   删除线
+类选择器（上面.声明，下面class调用）
+       .suibian{
+	color:blue   }
+      <div class="suibian"></div>
+   .*   通配符选择器，表示所有标签   
+    *:   链接伪类选择器(link  visited   hover  active  一定按照顺序写，不能乱顺序)
+       *:link{}     未访问的链接
+       *:visited{}    已访问的链接
+       *:hover{}     鼠标移动到的链接上
+       *:active{}     正选定的链接
+   块级元素（block-level）: 独自占据一整行或多行，可以设置高、宽度、对齐等属性
+   <h1>~<h6>、<p>、<div>、<ul>、<ol>、<li>
+   行内元素（inline-level）：不占有独立区域，一行可以设置多个标签，仅依靠自身字体大小和图片尺寸支撑结构，一般不可以设置宽度、高度对齐属性
+   <a>、<strong>、<b>、<em>、<i>、<del>、<s>、<ins>、<u>、<span>
+   行内快元素（inline-block）：不占有独立区域，一行可以设置多个标签，可以设置高、宽度、对齐等属性
+   <img /> 、<input />、<td>
+              块级转行内：  display:inline;
+              行内转块级：  dispaly:block;
+              块/行元素转换成行内快：  display:inline-block;  行内块与行内块之间会有缝隙，浮动清除
+
+   background背景    合写      （    background: color url(***.jpg)  repeat  attachment  position）
+      background:rgba(0, 0, 0, 0.3/0.4)      透明的  transparent  
+      background-color::       背景颜色
+            transparent   透明的
+      background-image:      背景图片
+                url(***.jpgl)                路径
+      background-repeat:      是否平铺
+             repeat            背景图像在纵向和横向上平铺（默认）
+             no-repeat       背景图像不平铺
+             repeat-x          背景图像在横向上平铺
+             repeat-y          背景图片在纵向上平铺
+      background-position:  x y;  背景位置
+            x   y        横向位置和纵向位置
+      background-attachment:       背景固定还是滚动
+            scroll  背景图像随对象内容滚动（默认）
+            fixed  背景图像固定
+  border   边框线属性           连写（   border: width  style   coler）
+       border-width:   边框线高度
+       border-style:     边框线样式
+            none       无边框线
+            solid       实线边框线
+            dashed   虚线边框线
+            dotted    点线边框线
+       border-color：    边框线颜色
+       border-collapse:      表示相邻边框线合并
+             collapse     合并相邻边框线
+       border-radius: **px / 50% 边框线圆角度
+   padding  内边距        （连写： padding: 10px 20px 30px 40px  4个参数顺时针方向 上 右 下 左 ，3个按 上 左右 下，2个 上下 左右）
+       padding-top: **px     上内边距
+       padding-right: **px     右内边距
+       padding-bottom: **px    下内边距
+       padding-left:  **px        左内边距
+                 : auto  水平左右居中对齐
+   margin  外边距    与内边距一样   
+  box-shadow:     盒子阴影   连写( h-shadow  v-shadow  blur  spread  color  inset)
+       h-shadow    单位 : **px       必需，水平阴影的位置。允许负值
+       v-shadow    单位 : **px       必需，垂直阴影的位置。允许负值
+       blur            单位 : **px        可选，模糊距离
+       spread        单位 : **px       可选，阴影的尺寸大小
+       color       可选，阴影的颜色
+       inset       可选，将外部阴影(outset)改为内部阴影1
+  float     浮动     选择器{float: 属性值;}   !!! 一定要给父级元素设置宽度
+                 left       元素向左浮动
+                 right     元素向右浮动
+                 none    元素不浮动(默认值)
+   clear  清除浮动        .** { clear: left | right | both;} 清除 左侧/右侧/左右两边 浮动的影响
+         1、额外标签法  0x  在浮动元素末尾添加一个末尾空标签
+	 <style> . ** {  clear:both}  <style>     <div class="**">  ***<div>
+         2、 父级添加 overflow 属性方法
+                 <style>  .** { overflow:  hidde | quto | scroll  }</style>
+         3、 伪类元素清除浮动                           (zoom 1为 ie6 ie7 专用清除浮动方式)
+	<style> .clearfix:after{ content:""; display: block; height: 0; clear:both; visibility:hidden} .clearfix { *zoom: 1}<style>    
+                  <div class="**  clearfix"> ** </div>
+         4、 双伪类清除浮动		(zoom 1为 ie6 ie7 专用清除浮动方式)
+	<style>      .clearfix:before, .clearfix:after { content: ""; display: table;}
+	     	 .clearfix:after { clear: both}
+	    	 .clearfix { *zoom: 1;}           </style>
+	<div class="clearfix">  </div>
+  position: 定位(定位模式+边偏移)
+        边偏移( top  bottom  left  right)
+        定位模式   **{position: 属性;}
+	static      自动定位  (默认流)
+	relative     相对定位
+	absolute     绝对定位
+	fixed         固定定位
+	  z-index: 0;          层叠属性(当多个定位元素层叠时可调整层叠等级 )  只有 绝对定位 和 固定定位 才有此属性
+
+   display:   显示与隐藏( 隐藏后不保留位置 )
+	block   显示对象元素(块对象的默认值)
+	none   隐藏对象元素
+	inline    行内元素的默认值(行内元素宽度默认为里面内容长度,如果无内容....)
+   visibility:  可见性( 隐藏后保留位置 )
+	inherit  继承上一个父级的可见性(默认)
+	visible  对象可见
+	hidden  对象隐藏
+	collapse  用来隐藏表格行和列
+    overflow:  溢出隐藏
+	insible   不切剪也不添加滚动条
+	auto     超出显示滚动条,不超出不显示滚动条
+	hidden   不显示超出部分,超出部分隐藏
+	scroll   不管有无超出,均显示滚动条
+    white-space:    "文字" 溢出的显示方式
+	normal    默认处理方式，超出文本域强制换行
+	nowrap     强制在同一行内显示文本，不换行
+    text-overflow:    文字溢出隐藏
+	clip   不显示省略标记 (默认)
+	ellipsis    当文本溢出时显示省略标记...
+		溢出的部分显示省略号:overflow   white-space  text-overflow   三个必需同时存在
+    cursor:    鼠标样式
+	default  小白(默认)
+	pointer  小手
+	move     移动
+	text      文本
+    outline:    轮廓       outline: color style width;
+	outline   0/none;    取消轮廓线
+    resize:  none;         防止拖拽文本域
+    vertical-align:      垂直居中   (行内快搭配使用 img  input)
+	baseline  基线对齐(默认)
+	middle    垂直居中
+	top         顶部对齐
+	bottom     底部对齐
+
+@font-face {  /*声明字体  引用字体*/
+	  font-family: "icomoon";  /* 我们自己起名字可以 */
+	  src:  url('fonts/icomoon.eot?7kkyc2');
+	  src:  url('fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+	    url('fonts/icomoon.ttf?7kkyc2') format('truetype'),
+	    url('fonts/icomoon.woff?7kkyc2') format('woff'),
+	    url('fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+	  font-style: normal;  /* 让倾斜字体正常 */}
+*规范写法：
+	首页HTML文件命名“index.html”
+	title 图标命名用"favicon.ico"
+	导航栏用"nav"
+
+
+JavaScript
+      <scrpit src=" 路径 "></scrpit>  HTML引用标签
+       var **    变量声明
+       alert(**)  浏览器弹窗
+       prompt("请输入一个数字")   弹框，并将用户输入的值返回
+
+        console.log(**);   把内容输出到浏览器控制台中
+        console.dir('');	输出对象的属性
+
+        document.write("**")     把文本输入到网页内
+              Math.PI      圆周率
+       三元表达式( ?  : )
+       ** [ ]
+
+       数据类型                        typeof(**)   获取变量类型
+    number    数字型   (判断是不是NaN 用 isNaN ( NaN not an number   不是一个数字)
+    	NAX_VALUE  数字最大值
+    	MIN_VALUE  数字最小值
+    steing       字符串
+    boolean    布尔类型
+    null           空类型，一个对象指向为空
+    undefined    声明变量，未定义
+    object       对象
+       类型转换
+    parseInt(**)         转换成整数
+    parseFloat(**)      转换成小数
+    Number(**)         转换成数字
+    **.toString           转换成字符串(严格转换)
+    String(**)             转换成字符串(随意转换)
+    Bollean(**)           转换成布尔类型
+       switch  判断语句
+    switch(表达式){
+        case  表达式1:   代码  ; break;
+        ..........
+        default:  代码 ;
+     for  循环 
+    break    跳出循环
+    continue    跳出本轮循环,并开始下一轮循环
+    
+     obj (array)     定义函数变量      引用数组使用  使用数组引用
+    obj (array) {
+    }
+    arr={**,**,***,**,**}
+    console.log(obj(arr))
+    boj.length      变量/数组 的长度
+   arguments      对象伪数组
+    instanceof  判断变量(对象)类型
+	变量 instanceof 类型        ----->返回结果是: true / false 是否为此属性
+
+   document.     获取页面对象(标签)的
+	getElementById( 'id' )                                       获取对象(标签)的id值
+	getElementsByTagName( "标签name" )  	       获取标签的标签名字(返回多个标签,是伪数组)
+	getElementsByName("name")		       根据name属性获取元素,返回伪数组    H5+C3
+ 	getElementsByClassName("class")	       根据类样式名字获取元素，返回伪数组     H5+C3
+	querySelector(.class)			       根据选择器获取元素,返回一个元素对象     H5+C3
+	querySelectorAll(.id)			        根据选择器获取元素,返回一个数组       H5+C3
+事件	
+	对象.onclick = function() {}                 	按钮事件   (判断类型时去掉on)
+	对象.onmouseover=function() {}	鼠标进入( 指向 )事件( :hover)   (判断类型时去掉on)
+	对象.onmouseout=function() {}	    	鼠标离开事件  (判断类型时去掉on)
+	对象.onfocus = function() {}	   	获取焦点事件  (判断类型时去掉on)
+	对象.onblur = function() {}	    	失去焦点事件  (判断类型时去掉on)
+	对象.onkeyup = function() {}	   	键盘抬起事件
+	对象.onscroll = function() {}		滚动条的滚动事件
+
+
+	.set+innerText="属性名 "             设置/获取标签中间的文本内容(textContent搭配使用,兼容 )只显示文本
+	.set+textContent="属性名"	   设置/获取标签中间的文本内容(innerText搭配使用,兼容 )只显示文本
+	.set+innerHTML="属性名"	   设置/获取标签中间的文本内容，包括显示标签
+	.className=" 属性名"	   css类选择器调用
+	.setAttribute(" 属性名 ", 值)           设置 自定义 属性  (判断类型时去掉on)
+	.getAttribute(" 属性名 ")   	   获取 自定义 属性的值(  判断时类型去掉on)
+
+   节点  node   
+	.nodeType: 1(标签) /  2(属性) / 3	(文本)			     		节点的类型 (_返回值)
+	.nodeName: 大写的标签名字(标签节点) / 小写的属性名(属性节点) / #text(文本节点)    	节点的名字 (_返回值)
+	.nodeValue: null(标签节点) / 属性值(属性节点) / 文本内容(文本节点)		节点的值 (_返回值)
+	.getAttributeNode(" 属性值 ")						根据属性名获取节点
+
+	.parentNode				获取节点的父级节点(等同 parentElement),
+	.parentElement				获取节点的父级元素(等同 parentNode)
+	.childNodes				获取节点的子节点
+	.children					获取节点的子元素
+	.firstChild					获取第一个子节点 ( IE8中获取的是第一个子元素 )
+	.firstElementChild				获取第一个子元素 ( IE8不支持 )
+	.lastChild					获取最后一个子节点 ( IE8中获取的是最后一个子元素 )
+	.lastElementChild				获取最后一个子元素  ( IE8不支持 )
+	.previousSibling				获取元素的前一个节点 ( IE8中获取的是前一个子元素 )
+	.previousElementSibling			获取元素的前一个元素 ( IE8不支持 )
+	.nextSibling				获取元素的后一个节点 ( IE8中获取的是后一个子元素 )
+	.nextElementSibling				获取元素的后一个元素 ( IE8不支持 )
+ 元素创建
+	.document.write(" 标签的代码及内容");
+	对象.innerHTML(" 标签及代码 ");
+	document.createElement(" 标签的名字")                            创建元素(对象)
+		父级对象.appendChild ( 标签名字 )		将创建的元素对象追加进**标签里面	
+元素操作
+	.insertBefore( 新元素, 父元素.firstElementChild)		把新的子元素(参数1)插入到父级元素的第一个(参数2为父级元素)
+	.replaceChild ( 新元素, 父元素.firstElementChild)		把子元素(参数2)替换掉成新元素(参数1)
+	.removeChild ( 父元素.firstElementChild)			移除父级元素中的第一个子元素
+元素绑定事件
+	对象.addEventListener("事件类型", 事件处理函数, false)	 事件类型去掉on(标准)，谷歌火狐支持,IE8不支持
+	对象.attachEvent( "on"+"事件类型", 事件处理函数)		 IE8支持,谷歌火狐IE11 不支持
+函数解绑事件( 如何绑定的事件就这么解绑事件)
+	对象.onclick = function(){};		        	        对象.onclic = null;
+	对象.addEventListener("click", 命名函数, false(事件阶段) )    对象.removeEventListener("click",命名函数, false(事件阶段) )	  
+	对象.attachEvent("on"+"click", 命名函数)	       	        对象.detachEvent("on"+"click", 命名函数,)
+阻止事件冒泡()
+	window.event.cancelBubble=true;	    IE特有,谷歌支持,火狐不支持
+	对象.stopPropagation();		    谷歌火狐支持,IE不支持
+事件三个阶段:
+	1    事件捕获阶段      从外向里捕获           ture
+	2    事件目标阶段      最开始选择的那个
+	3    事件冒泡阶段      从里向外冒泡           false 
+BOM    (window可省略)
+	window.onload = function() {};		页面加载完毕后执行,可把dom事件放入,
+	onunload = function() {};		页面关闭后触发事件
+	onbeforeunload = function() {}    	页面关闭时执行,执行完毕后关闭页面
+	getComputedStyle("对象", null).属性  	返回对象计算后的CSS样式属性(IE8不支持)
+	对象.currentStyle.属性		返回对象计算后的CSS样式属性(IE8支持)
+	window.location.hash		域名地址栏#号及后面的内容
+	window.location.host	 	主机名和端口号
+	location.hostname	 		主机名
+	location.port	 		端口号
+	window..location.protocol	 	通讯协议
+	window.location.pathname	 	文件的路径----相对路径
+	location.search	 		搜索的内容
+	location.href = "http://***.com";	设置跳转页面的地址--->属性(保存历史记录,页面可后退)
+	location.assign("http://***.com");	设置跳转页面的地址--->方法(保存历史记录,页面可后退)
+	location.replace("http://***.com");	设置跳转页面的地址(不保存历史记录,不可后退)
+	location.reload			重新加载--->刷新
+	window.history.back();		页面后退
+	history.forward();			页面前进
+	window.setInterval( "函数", 时间);	定时器，根据事件执行一次代码,返回值为定时器ID
+	clearInterval( 定时器id );		1清除定时器
+	setTimeout( "函数", "时间");		一次性定时器，只执行一次函数代码,返回值为定时器ID
+	clearTimeout( 定时器id )		清除一次性定时器
+	
+        offset系列：获取元素css相关的样式属性
+    对象.offsetWidth			获取元素的宽
+    对象.offsetHeight			获取元素的高
+    对象.offsetLeft			获取元素距离左边位置的距离,脱标则是.....
+    对象.offsetTop			获取元素距离上面位置的距离,脱标则是.....
+        scroll系列:卷曲出去的值
+    对象.scrollWidth			元素中内容的实际宽度
+    对象.scrollHeight			元素中内容的实际高度
+    对象.scrollTop			滚动条内容向上卷曲出去的距离
+        client系列: 可视区域
+    对象.clientHeight			可视区域的高,没有边框,边框内容的高度
+    对象.clientWidth			可视区域的宽,没有边框,边框内容的宽度
+    对象.clientLeft			左边边框的宽度
+    对象.clientTop			上面边框的宽度
+
+   构造函数.prototype.**=function(){};	通过构造函数添加原型对象方法(数据共享,节省内存空间)
+	prototype.constructor	构造器,指向自己所在原型对象所在的构造函数
+
+
+Jquery
+      jQuery入口函数
+	$(document).ready(function(){ 代码及实现功能 });
+	$(function(){ 所有代码 });
+    jq事件
+	$("js对象").click(function(){  });
+    jq对象和js对象转换
+	jq --> js      $( js对象 ).function( 代码 );
+	js --> jq	   var $li = $(li);
+
+     jquery选择器
+	基本选择器
+		$(".class").css("backgroundColor", "red");		可替换成  #id ,  div  ...........
+	过滤选择器
+		$("li:even").css("color", "red");			获取到的li中选择下标索引为偶数的元素
+		$("li:ood").css("color", "green");			获取到的li中选择下标索引为奇数的元素
+		$("li:eq(2)").css("color", "blue");			获取到的li中选择索引号为2的元素,从index(0)开始
+	筛选选择器
+		$("ul").children("li")				相当于$("ul li"),子类选择器
+		$("ul").find("li");				相当于$(ul li),后代选择器
+		$("#first").siblings("li");			查找兄弟节点,但不包括自身
+		$("#first").parent();				查找父级节点
+		$("li").eq(2);				相当于$("li:eq(2)"),index从0开,索引为2的元素
+		$("li").next();				找下一个兄弟
+		$("li").prev;				找上一个兄弟
+		$("li").index();				会返回当前元素在所有兄弟元素里面的索引
+AJAX ( 客户端请求)
+     发送请求:
+	var xhr = new XMLHttpRequest()			创建新ajax
+	xhr.open('GET', 'http://www.mohui.xyz')			设置连接方式,url地址
+	xhr.send()						开始请求
+     接收响应:
+	xhr.onreadystatechange = function () {			状态响应事件
+	     switch (this.readyState) {				
+	     case 2: console.log(this.getAllResponseHeaders) break	状态2(已接受到响应头的状态)获取响应头的内容
+	     case 3: console.log(this.readyState) break		状态3 (正在下载响应体,响应体不完整)的状态
+	     case 4: console.log(this.readyState) break		状态4 (执行完毕) 的响应
+	}
+
+PHP
+     php输出的基本格式
+	echo			可以一次输出多个数据
+	print			一次只能输出一次数据
+	var_dump		一般调式的时候用于输出数据以及数据类型
+
+    header 响应标头
+	header('Location:  路径');		跳转列表
+	header('Content-type: text/html');            在PHP 用于专门设置响应头
+       超全局变量
+	$GLOBALS[' age']		将age添加为全局变量,类似js的 window.age
+	$_SERVER			获取服务端相关信息
+	      $_SERVER['PHP_SELF']	获取文件本身的绝对路径(server服务端)
+	      $_SERVER['REQUEST_METHOD']     客户端请求方式		
+	$_POST			获取post提交参数
+	$_GET			获取get提交参数
+	$_FILES			获取上传文件
+	$_ENV			操作环境变量
+	$_COOKIE			操作Cookie
+	$_SESSION		操作Session
+
+	uniqid()			产生一个随机不重复的数
+	rand(min, max);		生成一个min-max之间的随机数
+ 	continue			结束本轮循环,并开始下一轮循环
+	exit(' ');			返回函数内部执行语句,并代码不继续执行下去
+	
+       字符串处理函数
+	strpos($temp, "132s") 	查找字符串在另一字符串或字符串变量中第一次出现的位置
+	strtolower($temp)		把变量或所有字符转换为小写
+	strtoupper($temp)		把所有字符串转换为大写
+	substr($temp, 7)		截取变量中的字符串,返回下标索引7开始剩下的字符串
+	explode("a", $object)	字符串分割,object的内容中遇a拆分,返回数组接收
+	foreach($object as $temp)	数组循环,每次循环中，当前单元的值被赋给temp
+	trim($temp")		函数移除字符串两侧的空白字符或其他预定义字符
+	      ltrim($temp)		函数移除字符串左边的空白字符或其他预定义字符
+	      rtiim($temp)		函数移除字符串右边的空白字符或其他预定义字符
+	str_replace($a, $b)		字符串替换
+	str_repeat($a, num)		重复字符串
+       数组处理函数
+	array_keys($temp)		获取数组中的键值对中的建a
+	array_values($temo)		获取数组中的键值对中的值
+	array_key_exists("keys", $temp)  判断数组中是否存在此键值
+	isset($dir["foo"])		判断数组中是否有指定的键
+		empty()			isset取非(相反)或空
+	array_unique( )		去掉重复的元素
+	array_push( )		将一个或多个元素追加到数组中
+	     $arr[ ] = 'new value'	将一个或多个元素追加到数组中
+	count( )			数组长度
+	in_array(element, array)	判断是否在数组中存在类型
+	array_search(element, array)	获取元素再数组中的下标索引
+	array_pop( )		删除数组中最后一个元素
+	array_splice(array, index, 1)	删除数组元素(数组,下标,数量)
+       时间函数
+	time( )			获取时间戳 (从1970年至今的时间),js为毫秒,php为秒
+	date_default_timezone_set('PRC')   设置时区(中国时间)
+	date('Y-m-d H:i:s', time())	格式化时间(格林威治时间)
+	strtotime($str)		将一个有格式的时间字符串转换成一个时间戳
+       文件操作
+	file_get_contents(" URL");	读取文件内容,返回数组对象接收
+	icomv( '原本的编码格式', '将要转换的编码格式', '要转换的路径');
+	     icomv('UTF-8', 'GBK', $text);	  Windows中文系统上要求传入的参数有中文必须是 GBK 编码
+	basename()		返回文件路径中文件名部分
+	copy()			复制文本
+	dirname()			返回路径中的目录名城部分
+	disk_free_space()		返回目录的可用空间
+	disk_total_space()		返回一个目录的磁盘总容量
+	fclose()			关闭打开的文件
+	file()			把文件读入一个数组中
+	file_exists()		检查文件或目录是否存在
+	file_get_contents()		将文件读入字符串   (上有注释)
+	file_put_contents()		将字符串写入文件
+		参数3默认覆盖写入,FILE_APPEND为追加数据而不是覆盖
+	filesize()			返回文件大小
+	fopen()			打开一个文件或 URL
+	glob()			返回一个包含匹配指定模式的文件名/目录的数组
+	is_dir()			判断指定的文件名是否是一个目录
+	is_file()			判断指定的文件是否为常规的文件
+	mkdir()			创建目录
+	move_uploaded_file()	将上传的文件移动到新位置,移动成功返回ture
+	pathinfo()			返回关于文件路径的信息
+	rename()			重命名文件或目录
+	rndir()			删除空的目录
+	unlink()			删除文件
+	文件载入
+		require ' 路径' ;		在当前脚本中载入另一个脚本文件,被载入的文件不存在会报错停止运行程序
+		     require_once '路径';	     如果之前载入过脚本,将不再重新载入(适合各种脚本嵌套载入,避免重复定义常量/函数)
+		include '路径';		在当前脚本中载入另一个脚本文件,被载入的文件不存在会警告不会影响程序继续运行
+		     include_once '路径';	      如果之前载入过脚本,将不再重新载入(适合各种脚本嵌套载入,避免重复定义常量/函数)
+	         include一般用于载入公共文件,这个文件的存在与否不能影响程序后面的运行
+	         require用于载入不可缺失的文件
+	move_uploaded_file($source, $target)	将一个文件(路径+名字)移动到目标路径(target),返回布尔值,是否移动成功
+       表单接收
+	$_GET( )			用于接收 URL 地址中的提交数据(一般是 GET 提交的参数)
+	$_POST( )			用于接收 请求体 中的提交数据(一般是 POST 提交的数据)
+	$_REQUEST( )		$_REQUEST = $_POST + $_GET
+	 UPLOAD_ERR_OK		文件上传时的错误信息
+	$_FILES['name']		接收文件(f返回为数组)
+		// 	array(5) {
+		//   ["name"]=>
+		//   string(38) "u=4285587126,3302189430&fm=26&gp=0.jpg"
+		//   ["type"]=>
+		//   string(10) "image/jpeg"
+		//   ["tmp_name"]=>
+		//   string(27) "C:\Windows\Temp\phpD155.tmp"
+		//   ["error"]=>
+		//   int(0)
+		//   ["size"]=>
+		//   int(29626) }
+      json      json序列化的数据必须时UTF-8格式
+	json_decode( json格式的数组, true );	解码json格式为关联数组数组
+	json_encode(数组对象);		加码json格式为关联数组数组
+      PHP对MySQL操作
+	$connection = mysqli_connect( 'ip', 'root', 'passworld', 'SQLname');	建立与数据库之间的连接,返回值为数据库对象
+	mysqli_set_charset( $connection, 'utf-8');				设置数据库字符编码格式,在查询数据之前进行
+	$query = mysqli_query( $connection, 'SQL语句');			基于数据库对象获取到数据库数据暂存的数据对象
+	查询语句
+	      mysqli_fetch_assoc( $query);				获取数据库暂存数据(一次只能获取一条数据),用循环遍历所有数据
+		 while ($itme = mysqli_fetch_assoc( $query)) { var_dump($itme);}
+	      mysqli_free_result( $query);					释放数据库暂存数据内存
+	增删改语句
+	      $itme = mysqli_affected_rows( $connection);			获取与上次拿到数据时受影响的数据
+
+	mysqli_close( $connection);					切断与数据库的连接
+        Cookie
+	设置cookie
+	       header( 'Set_Cookie: name=value');			设置cookie,这个方法只能使用一次重复使用会覆盖
+	       setcookie( 'name', 'value', time()+1*24*60*60, './path');	设置cookcie, (键, 值, 过期时间, 作用范围) /*创建时间一天过期*/
+		setcookie('name');					删除cookie
+		setcookie('name', 'value');				设置两个参数,cookie过期时间为本次会话,关闭浏览器失效
+	获取cookie 
+	       $_COOKIE
+       Sessiom
+	设置session
+	       session_start();						打开session
+	       $_SESSION['name'] = 'value';				设置session的键值对
+	获取session
+	        session_start();						打开session
+	        $_SESSION
+	删除session
+	        unset($_SESSION['name']);				删除session
+	
+
+My SQL
+       命令行(复数加s)
+	show databases;			打开/显示全部数据库
+	create database name;		创建指定名称数据库
+	use name;				打开/使用数据库
+	show tables			显示数据库中的表单
+	create table name(id int, username char(5), age int);	
+					创建指定名称的数据表单(l括号里面为表单每一列的定义类型)
+	desc name;			查看指定表单结构
+	source ./path/to/sql-file.sql;		执行本地 SQL 文件中的的 SQL 语句
+	drop table name;			删除指定名称数据库表单
+	drop datase name;			删除指定名称的数据库
+	exit | quit;				退出数据库终端
+      SQL语句(关键词用``反引号括起来)
+	--- 查询语句得到的是结果集
+	--- 增删改语句得到的是执行这个语句受影响的行数
+	select       --- 查询(可以select 列或者具体的值)
+	    select `列1`, `列2`, 值, `zhi` from `表单`;		查询表单里面的指定字符段.可同时查多个字符段(列)和所有具体的值
+	    select * from `表单`;			查询表单里所有列(如果使用通配符会产生 全表扫描少用)
+	insert        ---新增
+	     insert into `表单` vaules (null. 'CEO', '张三', 18, 0);	新增表单,必须跟列一一对上
+	     insert into 表单 (name, id, ) value ('张三', 1);	新增指定列名添加指定值的列
+	delete        ---删除
+	     delete from `表单`;			删除表单所有数据
+	     delete from 表单 where 列1 = ufo  and id > 1;	删除表单中列1值等于ufo的数据和id大于1的数据
+	update      ---修改
+	     update 表单 set title = 'ceo',user='1' where id = 1;	将id列=1的数据的title列的值设置为ceo,user值设置为1
+	--- where  筛选(判断)		and 和     > 大于     < 小于
+	     delete from 表单 where id in(1,2,3,4);		当id在1,2,3,4中出现的删处
+	---      limit   限制取几条数据
+	      select * from 表单 limit 2;			从表单中只取2条数据
+	      select * from 表单 limit 10 10;		越过十条数据取十条数据
+		skip = (page - 1) * size
+        SQL 查询函数
+	count()		--- 分页功能,查询总条数
+	max()/min()	---最大值,最小值
+	avg()		---平均值

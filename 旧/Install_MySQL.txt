@@ -1,0 +1,43 @@
+	MySQL安装教程
+
+#检测系统是否自带安装 MySQL:
+[root@host]# rpm -qa | grep mysql
+
+##如果你系统有安装，那可以选择进行卸载:
+[root@host]# rpm -e mysql　　// 普通删除模式
+[root@host]# rpm -e --nodeps mysql　　// 强力删除模式
+
+#下载并安装MySQL
+[root@host]# wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+[root@host]# rpm -ivh mysql-community-release-el7-5.noarch.rpm
+[root@host]# yum update
+[root@host]# yum install mysql-server
+
+#权限设置
+[root@host]# chown mysql:mysql -R /var/lib/mysql
+
+#初始化 MySQL
+[root@host]# mysqld --initialize
+
+#启动 MySQL
+[root@host]# systemctl start mysqld
+
+#查看 MySQL 运行状态
+[root@host]# systemctl status mysqld
+
+#使用 mysqladmin 命令俩检查服务器的版本
+[root@host]# mysqladmin --version
+
+#Mysql安装成功后，默认的root用户密码为空,创建root用户的密码
+mysql> set password for 用户名@localhost = password('新密码');
+
+#登陆云服务器官网设置3360端口添加安全组
+
+#设置MySQL外网登陆权限
+mysql> use mysql;
+mysql> select host, user, password from user;
+mysql> update user set host = "ip" where host = "sean" and user = "root";     //ip可以换位%,为所有连接都可以
+mysql> flush privileges;
+mysql> select host, user, password from user;
+
+
